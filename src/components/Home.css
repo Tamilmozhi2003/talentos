@@ -1,0 +1,2178 @@
+/* ==========================================================================
+   TalentOS Super Admin Dashboard Styles
+   High-Fidelity Re-creation Matching Uploaded Reference
+   ========================================================================== */
+
+/* Universal Resets for Clean Responsive Layout */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Universal Font Clarity & Crisp Antialiasing */
+.talentos-dashboard-container,
+.talentos-dashboard-container * {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  box-sizing: border-box;
+}
+
+/* Overall Layout Container */
+.talentos-dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+  background: linear-gradient(180deg, #E5EAFD 0%, #ECF2FE 40%, #F4F6FD 100%);
+  color: #0E1B38;
+  overflow-x: hidden;
+}
+
+/* Mobile Navigation Backdrop */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 25, 70, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1040;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.sidebar-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   1. LEFT SIDEBAR - PURE WHITE LOGO & CONTENTS
+   ========================================================================== */
+.talentos-sidebar {
+  width: 232px;
+  min-width: 232px;
+  flex: 0 0 232px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0e225e 0%, #0d2870 42%, #091a48 100%);
+  padding: 16px 14px 12px 14px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  z-index: 100;
+  box-shadow: 2px 0 16px rgba(10, 25, 70, 0.15);
+}
+
+/* Brand Logo - Graduation Cap + Artlysoft TalentOS */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 6px 18px 6px;
+  position: relative;
+}
+
+.sidebar-close-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  color: #FFFFFF;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.sidebar-close-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.brand-logo-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-cap-img {
+  width: 75px;  /* Increased by +5px from 38px */
+  height: 75px; /* Increased by +5px from 38px */
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+}
+
+.brand-text-wrap,
+.brand-tittle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+}
+
+.brand-company {
+  display: flex;
+  align-items: baseline;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.brand-artly {
+  color: #FFFFFF !important;
+}
+
+.brand-soft {
+  color: #F5A623 !important;
+}
+
+.brand-title {
+  display: flex;
+  align-items: baseline;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.brand-talent {
+  color: #FFFFFF !important;
+}
+
+.brand-os {
+  color: #F5A623 !important;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 4px;
+  padding-right: 2px;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 3px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+/* Navigation Items - Pure White Typography & Icons */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: #FFFFFF !important;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  user-select: none;
+}
+
+.nav-item .nav-icon {
+  font-size: 17px;
+  line-height: 1;
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-item .nav-label {
+  color: #FFFFFF !important;
+  font-weight: 500;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+.nav-item .dropdown-arrow {
+  font-size: 13px;
+  line-height: 1;
+  color: #FFFFFF !important;
+  opacity: 0.9 !important;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Nav Item Hover State */
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF !important;
+}
+
+/* Nav Item Active State (Dashboard - Vibrant Blue) */
+.nav-item.active {
+  background: #2864F5;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(40, 100, 245, 0.45);
+}
+
+.nav-item.active .nav-label {
+  font-weight: 600;
+}
+
+/* Bottom Promo Card */
+.sidebar-promo-card {
+  margin-top: auto;
+  background: linear-gradient(180deg, rgba(23, 50, 110, 0.95) 0%, rgba(13, 30, 75, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 13px 10px 11px 10px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.promo-rocket-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.promo-rocket-img {
+  width: 46px;
+  height: 40px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+}
+
+.promo-heading {
+  color: #FFFFFF !important;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.promo-sub {
+  display: block;
+  color: #FFFFFF !important;
+  opacity: 0.9;
+  font-size: 10px;
+  font-weight: 400;
+  margin: 2px 0 8px 0;
+}
+
+.promo-btn {
+  background: #F5A623;
+  color: #0A193B !important;
+  border-radius: 9999px;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  box-shadow: 0 2px 6px rgba(245, 166, 35, 0.35);
+}
+
+.promo-btn:hover {
+  background: #ffb53d;
+  transform: translateY(-1px);
+}
+
+.sidebar-copyright {
+  font-size: 9.5px;
+  color: #FFFFFF !important;
+  opacity: 0.65;
+  text-align: center;
+  margin-top: 8px;
+  letter-spacing: 0.1px;
+}
+
+/* ==========================================================================
+   MAIN CONTENT AREA
+   ========================================================================== */
+.talentos-main-area {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. TOP HEADER
+   ========================================================================== */
+.talentos-top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 38px;
+}
+
+.header-left-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.mobile-hamburger-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 9px;
+  width: 38px;
+  height: 38px;
+  color: #0E1B38;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+  padding: 0;
+  transition: all 0.15s ease;
+}
+
+.mobile-hamburger-btn:hover {
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+}
+
+/* Header Platform Title: TalentOS/Campus platform */
+.header-platform-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  user-select: none;
+  padding: 4px 0;
+}
+
+.platform-prefix {
+  color: #0E1B38;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.platform-slash {
+  color: #0E1B38;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0 1px;
+}
+
+.platform-name {
+  color: #0E1B38;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* Right Header */
+.header-right-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notification-bell-btn {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0E1B38;
+  padding: 4px;
+}
+
+.bell-icon {
+  color: #0E1B38;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #EF4444;
+  color: #FFFFFF;
+  font-size: 8.5px;
+  font-weight: 700;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #E5EAFD;
+}
+
+.admin-profile-pill {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+}
+
+.admin-avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E0EBFC 0%, #C8DCFC 100%);
+  border: 1.5px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.admin-avatar-circle .admin-avatar-icon {
+  font-size: 19px;
+  color: #2864F5;
+  line-height: 1;
+}
+
+.admin-avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.admin-info-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-name-row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.admin-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0E1B38;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.admin-chevron {
+  color: #64748B;
+}
+
+.admin-role {
+  font-size: 10.5px;
+  color: #64748B;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   3. WELCOME SECTION
+   ========================================================================== */
+.welcome-banner-card {
+  position: relative;
+  height: 104px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #EDF2F9;
+  box-shadow: 0 3px 14px rgba(40, 100, 245, 0.04);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.welcome-text-content {
+  padding-left: 22px;
+  z-index: 2;
+  position: relative;
+}
+
+.welcome-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0E1B38;
+  letter-spacing: -0.02em;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+
+.welcome-subtitle {
+  font-size: 12px;
+  color: #64748B;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.welcome-art-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 58%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.welcome-art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%);
+}
+
+/* ==========================================================================
+   4. FOUR STATISTICS CARDS
+   ========================================================================== */
+.stats-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.stat-card {
+  background: #FFFFFF;
+  border-radius: 14px;
+  border: 1px solid rgba(226, 232, 240, 0.75);
+  box-shadow: 0 4px 16px rgba(40, 100, 245, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  padding: 13px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80px;
+  box-sizing: border-box;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(40, 100, 245, 0.07);
+}
+
+.stat-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-card-svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.stat-card-icon {
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon-blue {
+  background: #E0EBFC;
+  color: #2864F5;
+}
+
+.stat-icon-purple {
+  background: #EAE8FD;
+  color: #3858F8;
+}
+
+.stat-svg-students {
+  width: 25px;
+  height: 18px;
+  display: block;
+}
+
+.stat-icon-orange {
+  background: #FFF2E5;
+  color: #F59E0B;
+}
+
+.stat-svg-faculty {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.stat-icon-green {
+  background: #DCF6EC;
+  color: #10B981;
+}
+
+.stat-info {
+  margin-left: 12px;
+  flex: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #64748B;
+  font-weight: 500;
+  display: block;
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0E1B38;
+  letter-spacing: -0.025em;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.stat-growth {
+  font-size: 11.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 3px;
+}
+
+.green-text {
+  color: #10B981;
+}
+
+.growth-arrow {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Ascending Mini Bars Graphics - 6 Vertical Gradient Bars */
+.stat-ascending-bars {
+  width: 48px;
+  height: 36px;
+  display: flex;
+  align-items: flex-end;
+  gap: 3.5px;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.stat-ascending-bars span {
+  width: 5px;
+  border-radius: 9999px;
+  display: block;
+}
+
+/* Progressive Opacity Stepping - exactly matches the reference image */
+.stat-ascending-bars span:nth-child(1) { opacity: 0.25; }
+.stat-ascending-bars span:nth-child(2) { opacity: 0.40; }
+.stat-ascending-bars span:nth-child(3) { opacity: 0.55; }
+.stat-ascending-bars span:nth-child(4) { opacity: 0.70; }
+.stat-ascending-bars span:nth-child(5) { opacity: 0.85; }
+.stat-ascending-bars span:nth-child(6) { opacity: 1.00; }
+
+.bars-blue span {
+  background: #2864F5;
+}
+
+.bars-purple span {
+  background: #A78BFA;
+}
+
+.bars-orange span {
+  background: #F59E0B;
+}
+
+.bars-green span {
+  background: #10B981;
+}
+
+/* ==========================================================================
+   5 & 6. PLATFORM GROWTH OVERVIEW & RECENT ACTIVITIES
+   ========================================================================== */
+.growth-and-activities-row {
+  display: grid;
+  grid-template-columns: 1.68fr 1fr;
+  gap: 12px;
+  align-items: stretch;
+}
+
+/* Card 5: Platform Growth Overview */
+.growth-overview-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #F1F5F9;
+  box-shadow: 0 2px 10px rgba(40, 100, 245, 0.03);
+  padding: 14px 18px 11px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.title-icon-blue {
+  background: #EBF2FF;
+  color: #2864F5;
+  border-radius: 6px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-icon-blue-plain {
+  color: #2864F5;
+}
+
+.title-icon-yellow {
+  color: #F59E0B;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0E1B38;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.card-header-link {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #2864F5;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.card-header-link:hover {
+  opacity: 0.8;
+}
+
+/* Time Filter Pills */
+.time-filter-pills {
+  background: #EDF2F7;
+  border-radius: 9999px;
+  padding: 2.5px;
+  display: flex;
+  gap: 2px;
+}
+
+.filter-btn {
+  border: none;
+  background: transparent;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #64748B;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-btn.active {
+  background: #2864F5;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(40, 100, 245, 0.3);
+}
+
+/* Chart Legend */
+.chart-legend-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin: 5px 0 6px 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-blue {
+  background: #2864F5;
+}
+
+.dot-orange {
+  background: #F97316;
+}
+
+.dot-grey {
+  background: #CBD5E1;
+}
+
+.legend-text {
+  font-size: 11px;
+  color: #64748B;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Area Chart SVG Wrap */
+.growth-chart-wrap {
+  width: 100%;
+  height: 172px;
+  margin-top: 4px;
+}
+
+.growth-chart-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.axis-label {
+  fill: #64748B;
+  font-size: 9.5px;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500;
+  text-rendering: geometricPrecision;
+}
+
+/* Card 6: Recent Activities */
+.recent-activities-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #F1F5F9;
+  box-shadow: 0 2px 10px rgba(40, 100, 245, 0.03);
+  padding: 16px 20px 14px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.activities-timeline {
+  display: flex;
+  flex-direction: column;
+  margin-top: 14px;
+  gap: 14px;
+  position: relative;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 36px;
+}
+
+.timeline-connector {
+  width: 14px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  margin-right: 22px;
+}
+
+.timeline-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 50%;
+  height: calc(100% + 14px);
+  width: 1.5px;
+  background: #E2E8F0;
+  z-index: 1;
+}
+
+.timeline-line.timeline-line-end {
+  height: 18px;
+}
+
+.activity-icon-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.icon-wrap-blue {
+  background: #EBF2FF;
+  color: #2864F5;
+}
+
+.icon-wrap-yellow {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.activity-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0E1B38;
+  margin: 0;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+.activity-meta {
+  font-size: 11px;
+  color: #64748B;
+  margin: 2px 0 0 0;
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   7, 8, 9. BOTTOM ROW CARDS
+   ========================================================================== */
+.bottom-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1.2fr;
+  gap: 12px;
+}
+
+.bottom-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #F1F5F9;
+  box-shadow: 0 2px 10px rgba(40, 100, 245, 0.03);
+  padding: 14px 16px 13px 16px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* 7. INSTITUTE DISTRIBUTION */
+.distribution-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 14px;
+  flex: 1;
+}
+
+.doughnut-chart-wrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+}
+
+.doughnut-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.doughnut-center-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.doughnut-center-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0E1B38;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.doughnut-center-label {
+  font-size: 9.5px;
+  color: #64748B;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.distribution-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.dist-legend-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.legend-label-group {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.legend-dot.dot-blue {
+  background: #2563EB;
+}
+
+.legend-dot.dot-orange {
+  background: #F59E0B;
+}
+
+.legend-dot.dot-grey {
+  background: #CBD5E1;
+}
+
+.legend-name {
+  font-size: 11.5px;
+  color: #475569;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.legend-value {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #0E1B38;
+}
+
+/* 8. REVENUE OVERVIEW */
+.revenue-overview-card {
+  position: relative;
+}
+
+.revenue-chart-stage {
+  position: relative;
+  width: 100%;
+  height: 98px;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.revenue-metric-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.revenue-amount-group {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.revenue-amount {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0E1B38;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1;
+}
+
+.revenue-growth-plain {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #10B981;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.revenue-growth-plain .growth-arrow {
+  font-size: 11px;
+}
+
+.revenue-subtitle {
+  font-size: 11px;
+  color: #64748B;
+  margin: 4px 0 0 0;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.revenue-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 4px;
+}
+
+.bar-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 26px;
+}
+
+.bar-track {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.bar-fill {
+  width: 25px;
+  border-radius: 5px 5px 0 0;
+  transition: height 0.3s ease;
+}
+
+.bar-highlight {
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.bar-label {
+  font-size: 10px;
+  color: #64748B;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 5px;
+}
+
+/* 9. QUICK ACTIONS */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+  flex: 1;
+}
+
+.action-button-card {
+  border: 1px solid #EDF2F7;
+  border-radius: 11px;
+  padding: 10px 4px 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.action-button-card:hover {
+  border-color: #CBD5E1;
+  background: #F8FAFC;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.action-circle-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-circle-blue {
+  background: #EFF6FF;
+  color: #2563EB;
+}
+
+.icon-circle-yellow {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.action-name {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #0E1B38;
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  white-space: normal;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS & MEDIA QUERIES
+   ========================================================================== */
+
+/* 1. LAPTOP VIEW (1024px – 1199px)
+   - Sidebar visible with slightly reduced width (205px)
+   - Reduced padding, fonts, and chart spacing proportionally
+   - Zero horizontal overflow
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .talentos-sidebar {
+    width: 205px;
+    min-width: 205px;
+    flex: 0 0 205px;
+    padding: 14px 10px 10px 10px;
+  }
+
+  .brand-cap-img {
+    width: 62px;
+    height: 62px;
+  }
+
+  .brand-company,
+  .brand-title {
+    font-size: 15px;
+  }
+
+  .nav-item {
+    padding: 7px 10px;
+    gap: 9px;
+    margin-bottom: 2px;
+  }
+
+  .nav-item .nav-label {
+    font-size: 12px;
+  }
+
+  .sidebar-promo-card {
+    padding: 10px 8px 8px 8px;
+  }
+
+  .promo-heading {
+    font-size: 10.5px;
+  }
+
+  .talentos-main-area {
+    padding: 10px 14px 18px 14px;
+    gap: 10px;
+  }
+
+  .welcome-banner-card {
+    height: 94px;
+  }
+
+  .welcome-heading {
+    font-size: 20px;
+  }
+
+  .welcome-subtitle {
+    font-size: 11.5px;
+  }
+
+  .stats-cards-grid {
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 10px 12px;
+    min-height: 74px;
+  }
+
+  .stat-icon-wrap {
+    width: 38px;
+    height: 38px;
+  }
+
+  .stat-card-svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .stat-svg-students {
+    width: 22px;
+    height: 16px;
+  }
+
+  .stat-svg-faculty {
+    width: 19px;
+    height: 19px;
+  }
+
+  .stat-info {
+    margin-left: 9px;
+  }
+
+  .stat-value {
+    font-size: 21px;
+  }
+
+  .stat-label {
+    font-size: 11.5px;
+  }
+
+  .stat-ascending-bars {
+    width: 40px;
+    height: 32px;
+    gap: 2.5px;
+    margin-left: 6px;
+  }
+
+  .growth-and-activities-row {
+    grid-template-columns: 1.55fr 1fr;
+    gap: 10px;
+  }
+
+  .growth-overview-card,
+  .recent-activities-card {
+    padding: 12px 14px;
+  }
+
+  .growth-chart-wrap {
+    height: 160px;
+  }
+
+  .bottom-cards-grid {
+    grid-template-columns: 1fr 1.25fr 1.2fr;
+    gap: 10px;
+  }
+
+  .bottom-card {
+    padding: 12px 12px;
+  }
+
+  .revenue-amount {
+    font-size: 19px;
+  }
+
+  .bar-column {
+    width: 22px;
+  }
+
+  .bar-fill {
+    width: 20px;
+  }
+
+  .quick-actions-grid {
+    gap: 6px;
+  }
+
+  .action-button-card {
+    padding: 8px 3px 6px 3px;
+  }
+
+  .action-circle-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .action-name {
+    font-size: 10px;
+  }
+}
+
+/* SHARED DRAWER RULES FOR TABLET & MOBILE (max-width: 1023px)
+   ========================================================================== */
+@media (max-width: 1023px) {
+  .mobile-hamburger-btn {
+    display: flex;
+  }
+
+  .sidebar-close-btn {
+    display: flex;
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    pointer-events: none;
+  }
+
+  .sidebar-backdrop.active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .talentos-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    min-width: 260px;
+    flex: none;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 1050;
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 6px 0 24px rgba(10, 25, 70, 0.4);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px 14px calc(28px + env(safe-area-inset-bottom, 16px)) 14px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .talentos-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+    margin-bottom: 24px; /* Generous space below Settings */
+    flex-shrink: 0;
+  }
+
+  .nav-item {
+    height: 38px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .sidebar-promo-card {
+    margin-top: auto;
+    margin-bottom: 14px;
+    flex-shrink: 0;
+  }
+
+  .sidebar-copyright {
+    margin-top: 4px;
+    padding-bottom: 16px;
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  .talentos-main-area {
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 16px calc(42px + env(safe-area-inset-bottom, 20px)) 16px;
+    gap: 12px;
+  }
+
+  .growth-and-activities-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* 2. TABLET VIEW (768px – 1023px)
+   - Collapsible drawer navigation with hamburger
+   - 2-column stats cards grid
+   - Stacked Growth Overview and Activities
+   - 2-column bottom cards with Quick Actions spanning full width
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .stats-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 12px 16px;
+  }
+
+  .growth-chart-wrap {
+    height: 180px;
+  }
+
+  .bottom-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .quick-actions-card {
+    grid-column: 1 / -1;
+  }
+
+  .quick-actions-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .action-button-card {
+    padding: 14px 8px 12px 8px;
+  }
+
+  .action-circle-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .action-name {
+    font-size: 11px;
+  }
+}
+
+/* 3. MOBILE VIEW (480px – 767px)
+   - Slide-in navigation drawer with hamburger menu & close button
+   - 2-column stats cards
+   - Stacked Platform Growth and Activities
+   - Stacked bottom cards
+   - Charts scale cleanly without clipping
+   ========================================================================== */
+@media (min-width: 480px) and (max-width: 767px) {
+  .talentos-main-area {
+    padding: 10px 12px calc(48px + env(safe-area-inset-bottom, 20px)) 12px;
+    gap: 12px;
+  }
+
+  .sidebar-nav {
+    margin-bottom: 26px; /* Generous clear space below Settings */
+  }
+
+  .sidebar-promo-card {
+    margin-bottom: 16px;
+  }
+
+  .sidebar-copyright {
+    padding-bottom: 20px;
+  }
+
+  .talentos-top-header {
+    min-height: 40px;
+  }
+
+  .welcome-banner-card {
+    height: auto;
+    min-height: 90px;
+    padding: 14px 16px;
+  }
+
+  .welcome-text-content {
+    padding-left: 0;
+    max-width: 65%;
+  }
+
+  .welcome-heading {
+    font-size: 18px;
+  }
+
+  .welcome-subtitle {
+    font-size: 11px;
+  }
+
+  .welcome-art-container {
+    width: 45%;
+    opacity: 0.85;
+  }
+
+  .stats-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .stat-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 12px 10px 12px;
+    min-height: 98px;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+
+  .stat-icon-wrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .stat-card-svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .stat-svg-students {
+    width: 22px;
+    height: 16px;
+  }
+
+  .stat-svg-faculty {
+    width: 20px;
+    height: 20px;
+  }
+
+  .stat-ascending-bars {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 24px;
+    gap: 2px;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .stat-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .stat-label {
+    width: 100%;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #64748B;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.25;
+  }
+
+  .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0E1B38;
+    line-height: 1.1;
+    margin: 0 6px 0 0;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-growth {
+    font-size: 11px;
+    font-weight: 600;
+    color: #10B981;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .growth-chart-wrap {
+    height: 165px;
+  }
+
+  .bottom-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .quick-actions-card {
+    grid-column: auto;
+  }
+
+  .distribution-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .doughnut-chart-wrap {
+    width: 94px;
+    height: 94px;
+    flex-shrink: 0;
+  }
+
+  .distribution-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .dist-legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .revenue-chart-stage {
+    height: 105px;
+  }
+
+  .bar-column {
+    width: 24px;
+  }
+
+  .bar-fill {
+    width: 22px;
+  }
+
+  .quick-actions-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .action-button-card {
+    padding: 10px 4px 8px 4px;
+  }
+
+  .action-name {
+    font-size: 10px;
+  }
+}
+
+/* 4. SMALL MOBILE VIEW (320px – 479px)
+   - Compact navigation and header elements
+   - 1-column stats cards grid
+   - 2x2 grid for Quick Actions
+   - Strict overflow prevention, 0 horizontal scroll
+   ========================================================================== */
+@media (max-width: 479px) {
+  .talentos-sidebar {
+    width: 250px;
+    max-width: 82vw;
+    padding: 14px 12px calc(32px + env(safe-area-inset-bottom, 24px)) 12px;
+  }
+
+  .sidebar-nav {
+    gap: 3.5px;
+    margin-top: 8px;
+    margin-bottom: 28px; /* Generous space below Settings */
+  }
+
+  .nav-item {
+    height: 37px;
+    padding: 0 11px;
+    font-size: 12.5px;
+  }
+
+  .sidebar-promo-card {
+    margin-top: auto;
+    margin-bottom: 14px;
+    padding: 12px 10px 10px 10px;
+  }
+
+  .sidebar-copyright {
+    margin-top: 2px;
+    padding-bottom: 22px;
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+
+  .talentos-main-area {
+    padding: 8px 10px calc(56px + env(safe-area-inset-bottom, 28px)) 10px;
+    gap: 10px;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .talentos-top-header {
+    height: auto;
+    padding: 3px 0;
+  }
+
+  .platform-slash,
+  .platform-name {
+    display: none;
+  }
+
+  .header-platform-title {
+    font-size: 15px;
+  }
+
+  .admin-role {
+    display: none;
+  }
+
+  .admin-avatar-circle {
+    width: 30px;
+    height: 30px;
+  }
+
+  .admin-avatar-circle .admin-avatar-icon {
+    font-size: 16px;
+  }
+
+  .admin-name {
+    font-size: 11.5px;
+  }
+
+  .header-right-wrap {
+    gap: 8px;
+  }
+
+  .notification-bell-btn {
+    padding: 2px;
+  }
+
+  .welcome-banner-card {
+    height: auto;
+    min-height: 76px;
+    padding: 12px 14px;
+  }
+
+  .welcome-art-container {
+    display: none;
+  }
+
+  .welcome-text-content {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .welcome-heading {
+    font-size: 17px;
+    margin-bottom: 2px;
+  }
+
+  .welcome-subtitle {
+    font-size: 10.5px;
+    line-height: 1.3;
+  }
+
+  /* 2-Column Grid for Stats Cards (Total Institutes, Students, Faculty, Revenue) */
+  .stats-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .stat-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 10px 9px 10px;
+    min-height: 94px;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+
+  .stat-icon-wrap {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .stat-card-svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .stat-svg-students {
+    width: 19px;
+    height: 14px;
+  }
+
+  .stat-svg-faculty {
+    width: 17px;
+    height: 17px;
+  }
+
+  .stat-ascending-bars {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 22px;
+    gap: 1.8px;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .stat-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .stat-label {
+    width: 100%;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: #64748B;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+  }
+
+  .stat-value {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0E1B38;
+    line-height: 1.1;
+    margin: 0 5px 0 0;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-growth {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #10B981;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5px;
+  }
+
+  /* Growth Chart & Activities */
+  .growth-and-activities-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .growth-overview-card,
+  .recent-activities-card {
+    padding: 12px 12px;
+  }
+
+  .card-header-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .card-title {
+    font-size: 13px;
+  }
+
+  .time-filter-pills {
+    transform: scale(0.9);
+    transform-origin: right center;
+  }
+
+  .chart-legend-row {
+    justify-content: flex-start;
+    margin: 4px 0 6px 0;
+    gap: 12px;
+  }
+
+  .growth-chart-wrap {
+    height: 145px;
+    overflow: hidden;
+  }
+
+  .activities-timeline {
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .timeline-connector {
+    margin-right: 12px;
+  }
+
+  .activity-icon-wrap {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .activity-title {
+    font-size: 11.5px;
+  }
+
+  .activity-meta {
+    font-size: 10px;
+  }
+
+  /* Bottom Cards Stacked */
+  .bottom-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 28px; /* More space at bottom of dashboard cards */
+  }
+
+  .bottom-card {
+    padding: 12px 12px;
+  }
+
+  .distribution-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 10px;
+  }
+
+  .doughnut-chart-wrap {
+    width: 86px;
+    height: 86px;
+    flex-shrink: 0;
+  }
+
+  .doughnut-center-number {
+    font-size: 18px;
+  }
+
+  .doughnut-center-label {
+    font-size: 9px;
+  }
+
+  .distribution-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .dist-legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .legend-label-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .legend-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+  }
+
+  .legend-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: #475569;
+  }
+
+  .legend-value {
+    font-size: 11px;
+    font-weight: 600;
+    color: #0E1B38;
+  }
+
+  .revenue-chart-stage {
+    height: 120px;
+  }
+
+  .revenue-metric-overlay {
+    position: static;
+    margin-bottom: 6px;
+  }
+
+  .revenue-amount {
+    font-size: 18px;
+  }
+
+  .bar-column {
+    width: 18px;
+  }
+
+  .bar-fill {
+    width: 16px;
+  }
+
+  .bar-label {
+    font-size: 9px;
+  }
+
+  /* 2x2 Grid for Quick Actions on Small Screens */
+  .quick-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .action-button-card {
+    padding: 10px 4px 8px 4px;
+  }
+
+  .action-circle-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .action-name {
+    font-size: 10px;
+  }
+}

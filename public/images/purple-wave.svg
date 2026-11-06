@@ -1,0 +1,45 @@
+<svg width="500" height="680" viewBox="0 0 500 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Royal Blue Gradient: Brilliant royal blue to deep navy -->
+    <linearGradient id="royalBlueTopRightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="28%" stop-color="#2563EB" />
+      <stop offset="65%" stop-color="#1D4ED8" />
+      <stop offset="100%" stop-color="#1E40AF" />
+    </linearGradient>
+
+    <!-- Inner Wave Glow Gradient -->
+    <linearGradient id="waveInnerGlowGrad" x1="0%" y1="15%" x2="100%" y2="85%">
+      <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.45" />
+      <stop offset="40%" stop-color="#60A5FA" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Soft Ambient Elevation Shadow -->
+    <filter id="waveSoftShadow" x="-15%" y="-10%" width="130%" height="120%">
+      <feDropShadow dx="-6" dy="10" stdDeviation="15" flood-color="#1E3A8A" flood-opacity="0.20" />
+    </filter>
+  </defs>
+
+  <!-- Main Royal Blue Flowing Wave Along Right Edge -->
+  <path 
+    d="M 500,0 L 245,0 C 165,85 135,185 168,285 C 198,375 238,435 212,525 C 188,590 135,640 70,680 L 500,680 Z" 
+    fill="url(#royalBlueTopRightGrad)" 
+    filter="url(#waveSoftShadow)" 
+  />
+
+  <!-- Secondary Inner Highlight Contour for Fluid 3D Depth -->
+  <path 
+    d="M 500,0 L 275,0 C 200,95 170,195 200,295 C 230,385 270,445 244,535 C 224,595 175,645 115,680 L 500,680 Z" 
+    fill="url(#waveInnerGlowGrad)" 
+  />
+
+  <!-- Delicate Edge Contour Stroke -->
+  <path 
+    d="M 245,0 C 165,85 135,185 168,285 C 198,375 238,435 212,525 C 188,590 135,640 70,680" 
+    fill="none" 
+    stroke="#93C5FD" 
+    stroke-width="2.5" 
+    stroke-opacity="0.45" 
+  />
+</svg>

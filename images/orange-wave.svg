@@ -1,0 +1,44 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Warm Peach / Orange Accent Gradient -->
+    <linearGradient id="peachOrangeAccentGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FED7AA" />
+      <stop offset="30%" stop-color="#FDBA74" />
+      <stop offset="65%" stop-color="#FB923C" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+
+    <!-- Inner Soft Glow -->
+    <linearGradient id="peachGlowInnerGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF7ED" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#FDBA74" stop-opacity="0" />
+    </linearGradient>
+
+    <filter id="peachDropShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="-2" dy="4" stdDeviation="8" flood-color="#C2410C" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Flowing Crescent Curve at Bottom Right Edge -->
+  <path 
+    d="M 240,45 C 165,55 85,130 60,240 L 240,240 Z" 
+    fill="url(#peachOrangeAccentGrad)" 
+    filter="url(#peachDropShadow)"
+    opacity="0.96" 
+  />
+
+  <!-- Soft Inner Glow Contour -->
+  <path 
+    d="M 240,80 C 180,88 110,150 88,240 L 240,240 Z" 
+    fill="url(#peachGlowInnerGrad)" 
+  />
+
+  <!-- Edge Highlight Stroke -->
+  <path 
+    d="M 240,45 C 165,55 85,130 60,240" 
+    fill="none" 
+    stroke="#FFEDD5" 
+    stroke-width="2" 
+    stroke-opacity="0.6" 
+  />
+</svg>

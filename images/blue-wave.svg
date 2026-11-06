@@ -1,0 +1,45 @@
+<svg width="820" height="460" viewBox="0 0 820 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Primary Rising Wave: Rich Royal to Sky Blue Gradient -->
+    <linearGradient id="skyBlueMountainGrad" x1="0%" y1="100%" x2="80%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" stop-opacity="0.95" />
+      <stop offset="30%" stop-color="#3B82F6" stop-opacity="0.92" />
+      <stop offset="65%" stop-color="#60A5FA" stop-opacity="0.88" />
+      <stop offset="100%" stop-color="#93C5FD" stop-opacity="0.80" />
+    </linearGradient>
+
+    <!-- Ambient Underlay Wave Gradient -->
+    <linearGradient id="ambientUnderlayGrad" x1="0%" y1="100%" x2="70%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.75" />
+      <stop offset="45%" stop-color="#60A5FA" stop-opacity="0.60" />
+      <stop offset="100%" stop-color="#BFDBFE" stop-opacity="0.40" />
+    </linearGradient>
+
+    <!-- Soft Ambient Drop Shadow -->
+    <filter id="mountainSoftCrestShadow" x="-10%" y="-15%" width="125%" height="130%">
+      <feDropShadow dx="-3" dy="8" stdDeviation="14" flood-color="#1D4ED8" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Layer 1: Ambient Base Wave Underlay -->
+  <path 
+    d="M 0,460 C 75,400 160,320 225,275 C 280,235 340,228 405,250 C 495,280 590,365 820,335 L 820,460 Z" 
+    fill="url(#ambientUnderlayGrad)" 
+  />
+
+  <!-- Layer 2: Prominent Rising Blue Wave Crest Sweeping Upward -->
+  <path 
+    d="M 0,460 C 85,385 180,300 245,248 C 295,210 355,208 420,234 C 510,270 610,355 820,322 L 820,460 Z" 
+    fill="url(#skyBlueMountainGrad)" 
+    filter="url(#mountainSoftCrestShadow)" 
+  />
+
+  <!-- Layer 3: Subtle Crest Highlight Line -->
+  <path 
+    d="M 0,460 C 85,385 180,300 245,248 C 295,210 355,208 420,234 C 510,270 610,355 820,322" 
+    fill="none" 
+    stroke="#BFDBFE" 
+    stroke-width="2.5" 
+    stroke-opacity="0.5" 
+  />
+</svg>

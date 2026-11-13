@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './Home.css';
 import campusBanner from '../assets/images/campus-banner.png';
 import rocketImg from '../assets/images/rocket.png';
@@ -16,17 +16,53 @@ import {
   Crown,
   Rocket,
   Menu,
-  X
+  X,
+  User,
+  Settings,
+  LogOut
 } from 'lucide-react';
 
 export default function Home() {
   const [activeMenu, setActiveMenu] = useState('Dashboard');
   const [timeFilter, setTimeFilter] = useState('1M');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const profileDropdownRef = useRef(null);
+
+  // Close profile dropdown when clicking outside or pressing Escape
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        profileDropdownRef.current &&
+        !profileDropdownRef.current.contains(event.target)
+      ) {
+        setProfileDropdownOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setProfileDropdownOpen(false);
+      }
+    };
+
+    if (profileDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [profileDropdownOpen]);
 
   const handleNavClick = (menu) => {
     setActiveMenu(menu);
     setMobileMenuOpen(false);
+    setProfileDropdownOpen(false);
   };
 
   return (
@@ -192,7 +228,10 @@ export default function Home() {
             <button
               type="button"
               className="mobile-hamburger-btn"
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={() => {
+                setMobileMenuOpen(true);
+                setProfileDropdownOpen(false);
+              }}
               aria-label="Open navigation menu"
             >
               <Menu size={20} strokeWidth={2.2} />
@@ -206,21 +245,102 @@ export default function Home() {
 
           {/* Right Header: Notification & Admin Profile */}
           <div className="header-right-wrap">
-            <div className="notification-bell-btn">
-              <Bell className="bell-icon" size={19} strokeWidth={2} />
-            </div>
+            <button
+              type="button"
+              className="notification-bell-btn"
+              aria-label="View notifications"
+            >
+              <Bell className="bell-icon" size={20} strokeWidth={1.9} />
+            </button>
 
-            <div className="admin-profile-pill">
-              <div className="admin-avatar-circle">
-                <i className="bi bi-person-fill admin-avatar-icon"></i>
-              </div>
-              <div className="admin-info-box">
-                <div className="admin-name-row">
-                  <span className="admin-name">Super Admin</span>
-                  <ChevronDown className="admin-chevron" size={14} strokeWidth={2} />
+            {/* Profile Dropdown Container */}
+            <div className="admin-profile-container" ref={profileDropdownRef}>
+              <div
+                className={`admin-profile-pill ${profileDropdownOpen ? 'active' : ''}`}
+                onClick={() => setProfileDropdownOpen((prev) => !prev)}
+                role="button"
+                tabIndex={0}
+                aria-haspopup="true"
+                aria-expanded={profileDropdownOpen}
+                aria-label="User profile menu"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setProfileDropdownOpen((prev) => !prev);
+                  }
+                }}
+              >
+                <div className="admin-avatar-circle" aria-hidden="true">
+                  <span>SA</span>
                 </div>
-                <span className="admin-role">Administrator</span>
+                <div className="admin-info-box">
+                  <div className="admin-name-row">
+                    <span className="admin-name">Super Admin</span>
+                    <ChevronDown
+                      className={`admin-chevron ${profileDropdownOpen ? 'rotated' : ''}`}
+                      size={15}
+                      strokeWidth={2.2}
+                    />
+                  </div>
+                  <span className="admin-role">Administrator</span>
+                </div>
               </div>
+
+              {/* Dropdown Menu (matching 2nd uploaded image) */}
+              {profileDropdownOpen && (
+                <div className="admin-profile-dropdown" role="menu" aria-label="Profile options">
+                  <div className="dropdown-user-header">
+                    <div className="dropdown-avatar-circle" aria-hidden="true">
+                      <span>SA</span>
+                    </div>
+                    <div className="dropdown-user-details">
+                      <span className="dropdown-user-name">SuperAdmin</span>
+                      <span className="dropdown-user-email">super@pmccollege.ac.in</span>
+                    </div>
+                  </div>
+
+                  <div className="dropdown-divider" />
+
+                  <div className="dropdown-menu-list">
+                    <button
+                      type="button"
+                      className="dropdown-menu-item"
+                      role="menuitem"
+                      onClick={() => {
+                        setProfileDropdownOpen(false);
+                      }}
+                    >
+                      <User className="dropdown-item-icon" size={18} strokeWidth={1.9} />
+                      <span className="dropdown-item-label">My Profile</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className="dropdown-menu-item"
+                      role="menuitem"
+                      onClick={() => {
+                        handleNavClick('Settings');
+                        setProfileDropdownOpen(false);
+                      }}
+                    >
+                      <Settings className="dropdown-item-icon" size={18} strokeWidth={1.9} />
+                      <span className="dropdown-item-label">Settings</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className="dropdown-menu-item dropdown-logout-item"
+                      role="menuitem"
+                      onClick={() => {
+                        setProfileDropdownOpen(false);
+                      }}
+                    >
+                      <LogOut className="dropdown-item-icon" size={18} strokeWidth={1.9} />
+                      <span className="dropdown-item-label">Logout</span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </header>
